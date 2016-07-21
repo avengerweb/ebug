@@ -16,6 +16,21 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    'ember-simple-auth': {
+      authorizer: 'authorizer:jwt',
+      crossOriginWhitelist: ['*'],
+      authenticationRoute: 'login'
+    },
+    'ember-simple-auth-token': {
+      refreshAccessTokens: true,
+      timeFactor: 1,
+      refreshLeeway: 300, // Refresh the token 5 minutes (300s) before it expires.
+      identificationField: 'username',
+      passwordField: 'password',
+      tokenPropertyName: 'token',
+      authorizationPrefix: 'Bearer ',
+      authorizationHeaderName: 'Authorization'
     }
   };
 
