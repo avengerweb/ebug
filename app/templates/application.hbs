@@ -1,0 +1,8 @@
+{{#if session.isAuthenticated}}
+    <li>Hello {{user.username}}!)</li>
+    <li><a {{action 'invalidateSession'}}>Logout</a></li>
+{{else}}
+    <li>{{#link-to 'login'}}Login{{/link-to}}</li>
+    <li>{{#link-to 'register'}}Register{{/link-to}}</li>
+{{/if}}
+{{outlet}}

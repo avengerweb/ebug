@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
+    apiBaseUrl: 'http://localhost:81/public/api/v1',
     modulePrefix: 'ebug',
     environment: environment,
     baseURL: '/',
@@ -24,13 +25,18 @@ module.exports = function(environment) {
     },
     'ember-simple-auth-token': {
       refreshAccessTokens: true,
-      timeFactor: 1,
+      timeFactor: 1000,
       refreshLeeway: 300, // Refresh the token 5 minutes (300s) before it expires.
       identificationField: 'username',
       passwordField: 'password',
       tokenPropertyName: 'token',
       authorizationPrefix: 'Bearer ',
-      authorizationHeaderName: 'Authorization'
+      authorizationHeaderName: 'Authorization',
+      serverTokenEndpoint: 'http://localhost:81/public/api/v1/auth/login'
+    },
+    contentSecurityPolicy: {
+      // ... other stuff here
+      'connect-src': "'self' http://localhost:8000"
     }
   };
 
